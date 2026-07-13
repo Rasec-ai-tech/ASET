@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Association Solidarité et Éducation pour Tous - Campagne de collecte de dons pour offrir kits scolaires, vélos et parrainages aux enfants dans le besoin.">
+    <meta name="keywords" content="ASET, don, solidarité, éducation, enfants, Afrique, Orange Money">
+    <meta name="author" content="Association Solidarité et Éducation pour Tous">
+    
+    <!-- Open Graph pour le partage sur les réseaux sociaux -->
+    <meta property="og:title" content="ASET - Campagne de Solidarité">
+    <meta property="og:description" content="Ensemble, offrons un avenir meilleur aux enfants. Soutenez notre campagne de dons.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aset-donation.org">
+    <meta property="og:image" content="https://aset-donation.org/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ASET - Campagne de Solidarité">
+    <meta name="twitter:description" content="Ensemble, offrons un avenir meilleur aux enfants.">
+    
+    <title>ASET - Campagne de Solidarité et d'Éducation</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+    
+    <!-- Lien vers le CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animation de chargement -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="images/Logo.jpeg" alt="Logo ASET" width="80" height="80">
+            </div>
+            <p>Chargement...</p>
+        </div>
+    </div>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Bouton mode sombre -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">
+        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="nav-logo-image">
+                    <img src="images/Logo.jpeg" alt="Logo ASET" width="50" height="50">
+                </div>
+                <div class="nav-logo-text">
+                    <span>ASET</span>
+                    <small>Numéro d'identification : 2025-01376/MATM/RHBS/GBD/SG/SESA</small>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#objectifs">Objectifs</a></li>
+                <li><a href="#don">Faire un don</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="images/Logo.jpeg" alt="Logo ASET" width="150" height="150" class="main-logo">
+            </div>
+            <h1 class="hero-title">Campagne de solidarité</h1>
+            <p class="hero-subtitle">Ensemble, offrons un avenir meilleur aux enfants.</p>
+            <p class="hero-description">
+                L'Association Solidarité et Éducation pour Tous (ASET) lance une grande campagne 
+                pour financer des kits scolaires, des vélos et des parrainages d'enfants dans le besoin. 
+                Votre générosité changera des vies.
+            </p>
+            <a href="#don" class="btn btn-primary btn-large pulse">
+                Faire un don
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Objectifs -->
+    <section id="objectifs" class="objectives section">
+        <div class="container">
+            <h2 class="section-title">Nos Objectifs</h2>
+            <p class="section-subtitle">Votre contribution permettra de réaliser ces projets concrets</p>
+            
+            <div class="objectives-grid">
+                <div class="objective-card" data-animate>
+                    <div class="objective-icon">📚</div>
+                    <h3>500 Kits scolaires</h3>
+                    <p>Cahiers, stylos, sacs et fournitures complètes pour permettre aux enfants d'étudier dans de bonnes conditions.</p>
+                </div>
+
+                <div class="objective-card" data-animate>
+                    <div class="objective-icon">🚲</div>
+                    <h3>10 Vélos</h3>
+                    <p>Des vélos pour les enfants vivant loin de l'école, leur permettant de se déplacer en toute sécurité.</p>
+                </div>
+
+                <div class="objective-card" data-animate>
+                    <div class="objective-icon">❤️</div>
+                    <h3>50 Enfants à parrainer</h3>
+                    <p>Parrainage complet incluant scolarité, soins médicaux et soutien psychosocial pour un an.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Faire un don -->
+    <section id="don" class="donation section">
+        <div class="container">
+            <h2 class="section-title">Faire un don</h2>
+            <p class="section-subtitle">Remplissez le formulaire ci-dessous et choisissez votre moyen de paiement</p>
+
+            <div class="donation-grid">
+                <div class="donation-card" data-animate>
+                    <div class="donation-header">
+                        <h3>Formulaire de don</h3>
+                        <p>Votre aide permettra d'atteindre nos objectifs concrets.</p>
+                    </div>
+                    <div class="donation-content">
+                        <form id="donationForm" class="donation-form" novalidate>
+                            <div class="form-row">
+                                <label for="donorNameInput">Nom complet</label>
+                                <input type="text" id="donorNameInput" name="donorNameInput" placeholder="Votre nom et prénom" autocomplete="name" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="donorPhoneInput">Téléphone</label>
+                                <input type="tel" id="donorPhoneInput" name="donorPhoneInput" placeholder="Ex : 77 42 17 71" autocomplete="tel" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="donorEmailInput">Email</label>
+                                <input type="email" id="donorEmailInput" name="donorEmailInput" placeholder="Votre adresse email" autocomplete="email">
+                            </div>
+
+                            <div class="form-row">
+                                <label for="donationAmountInput">Montant souhaité (FCFA)</label>
+                                <div class="quick-amounts">
+                                    <button type="button" class="quick-amount" data-amount="1000">1 000</button>
+                                    <button type="button" class="quick-amount" data-amount="2000">2 000</button>
+                                    <button type="button" class="quick-amount" data-amount="5000">5 000</button>
+                                    <button type="button" class="quick-amount" data-amount="10000">10 000</button>
+                                </div>
+                                <input type="number" id="donationAmountInput" name="donationAmountInput" min="100" step="100" placeholder="Ou saisissez un montant en FCFA" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label>Moyen de paiement</label>
+                                <div class="payment-methods" role="radiogroup" aria-label="Moyen de paiement">
+                                    <label class="payment-option">
+                                        <input type="radio" name="donationMethod" value="orange" checked>
+                                        <span>Orange Money</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="donationMethod" value="moov">
+                                        <span>Moov Money</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="donationMethod" value="wave">
+                                        <span>Wave</span>
+                                    </label>
+                                </div>
+                                <input type="hidden" id="donationMethod" name="donationMethod" value="orange">
+                                <p class="payment-help">Les coordonnées ci-dessous sont affichées pour faciliter votre transfert.</p>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="donationMessageInput">Message (optionnel)</label>
+                                <textarea id="donationMessageInput" name="donationMessageInput" rows="3" placeholder="Votre message de soutien"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-confirm">Envoyer la demande</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Partage -->
+    <section class="share-section">
+        <div class="container">
+            <h3>Partager cette campagne</h3>
+            <div class="share-buttons">
+                <button class="btn-share whatsapp" onclick="shareOnWhatsApp()" aria-label="Partager sur WhatsApp">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                </button>
+                <button class="btn-share facebook" onclick="shareOnFacebook()" aria-label="Partager sur Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
+                </button>
+                <button class="btn-share telegram" onclick="shareOnTelegram()" aria-label="Partager sur Telegram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    Telegram
+                </button>
+                <button class="btn-share link" onclick="copyLink()" aria-label="Copier le lien">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                    Copier le lien
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section id="galerie" class="gallery section">
+        <div class="container">
+            <h2 class="section-title">Notre Galerie</h2>
+            <p class="section-subtitle">Découvrez les photos de nos actions sur le terrain</p>
+            
+            <div class="gallery-grid">
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0006.jpg" alt="Don de monsieur Karim Ouattara" class="gallery-image">
+                    <div class="gallery-overlay"><p>Don de monsieur Karim Ouattara</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/beneficiaires_edition1.jpg" alt="Photo de famille - Bénéficiaires" class="gallery-image">
+                    <div class="gallery-overlay"><p>Photo de famille - Bénéficiaires</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/photo_de_famille_edition1.jpg" alt="Photo de famille" class="gallery-image">
+                    <div class="gallery-overlay"><p>Photo de famille</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/remise_de_kit_par_le_pds.jpg" alt="Remise de kit par le PDS" class="gallery-image">
+                    <div class="gallery-overlay"><p>Remise de kit par le PDS</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0010.jpg" alt="Photo de famille" class="gallery-image">
+                    <div class="gallery-overlay"><p>Photo de famille</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0011.jpg" alt="Photo de famille" class="gallery-image">
+                    <div class="gallery-overlay"><p>Photo de famille</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0012.jpg" alt="Kits édition 3" class="gallery-image">
+                    <div class="gallery-overlay"><p>Kits - édition 3</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0013.jpg" alt="Bénéficiaires - édition 3" class="gallery-image">
+                    <div class="gallery-overlay"><p>Bénéficiaires - édition 3</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/remise_de_vivres.jpg" alt="Remise de vivres" class="gallery-image">
+                    <div class="gallery-overlay"><p>Remise de vivres</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0016.jpg" alt="Bénéficiaires - édition 3" class="gallery-image">
+                    <div class="gallery-overlay"><p>Bénéficiaires - édition 3</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/IMG-20260704-WA0017.jpg" alt="Projet éducatif" class="gallery-image">
+                    <div class="gallery-overlay"><p>Fabrication de pagne</p></div>
+                </article>
+                <article class="gallery-item" data-animate>
+                    <img src="images/formation_saponification.jpg" alt="Formation en saponification" class="gallery-image">
+                    <div class="gallery-overlay"><p>Formation en saponification</p></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Vidéos -->
+    <section class="videos section">
+        <div class="container">
+            <h2 class="section-title">Nos Vidéos</h2>
+            <p class="section-subtitle">Découvrez nos actions en vidéo</p>
+            
+            <div class="videos-grid">
+                <article class="video-card" data-animate>
+                    <video controls width="100%" height="auto" poster="images/IMG-20260704-WA0006.jpg">
+                        <source src="videos/VID-20260704-WA0019.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                    <div class="video-info">
+                        <h3>Vidéo 1 - Témoignage d'une donatrice</h3>
+                        <p>Capture vidéo du témoignage de madame Lénatou KOUROUMA.</p>
+                    </div>
+                </article>
+
+                <article class="video-card" data-animate>
+                    <video controls width="100%" height="auto" poster="images/IMG-20260704-WA0007.jpg">
+                        <source src="videos/VID-20260704-WA0020.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                    <div class="video-info">
+                        <h3>Vidéo 2 - Présentation de l'ASET</h3>
+                        <p>Découvrez qui nous sommes à travers le speech de notre président.</p>
+                    </div>
+                </article>
+
+                <article class="video-card" data-animate>
+                    <video controls width="100%" height="auto" poster="images/IMG-20260704-WA0008.jpg">
+                        <source src="videos/VID-20260704-WA0021.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                    <div class="video-info">
+                        <h3>Vidéo 3 - Retour sur l'édition 3</h3>
+                        <p>Témoignage visuel de l'engagement collectif pour une meilleure éducation.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <p class="section-subtitle">Nous sommes à votre écoute</p>
+            
+            <div class="contact-container">
+                <div class="contact-card" data-animate>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📋</div>
+                            <div>
+                                <h4>Nom de l'association</h4>
+                                <p>Association Solidarité et Éducation pour Tous (ASET)</p>
+                            </div>
+                        </div>
+                        
+                        <a class="contact-item" href="tel:+22177421771">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+221 77 42 17 71</p>
+                            </div>
+                        </a>
+                        
+                        <a class="contact-item" href="https://wa.me/22667058105" target="_blank" rel="noopener noreferrer">
+                            <div class="contact-icon">💬</div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+226 67 05 81 05</p>
+                            </div>
+                        </a>
+                        
+                        <a class="contact-item" href="mailto:ghislainbassolet999@gmail.com">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>ghislainbassolet999@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Bobo-Dioulasso, Burkina Faso</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h4>Suivez-nous</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Logo.jpeg" alt="Logo ASET" width="60" height="60">
+                    <h3>ASET</h3>
+                    <p>Association Solidarité et Éducation pour Tous</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#objectifs">Objectifs</a></li>
+                        <li><a href="#don">Faire un don</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 +226 77 42 17 71 / +226 02 22 92 46</p>
+                    <p>✉️ ghislainbassolet999@gmail.com</p>
+                    <p>📍 Bobo-Dioulasso, Burkina Faso</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Association Solidarité et Éducation pour Tous. Tous droits réservés.</p>
+                <p>❤️by 67058105</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification toast -->
+    <div id="toast" class="toast"></div>
+
+    <div id="paymentModal" class="payment-modal hidden" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+        <div class="payment-modal-content">
+            <button id="closePaymentModal" class="payment-modal-close" aria-label="Fermer">×</button>
+
+            <div id="paymentInstructions">
+                <h3 id="paymentModalTitle">Instructions de paiement</h3>
+                <div id="paymentInstructionsContent"></div>
+            </div>
+
+            <div id="paymentWaiting" class="payment-waiting hidden">
+                <div class="waiting-icon">✓</div>
+                <h3>Confirmation du don</h3>
+                <p id="waitingMessage">Merci pour votre générosité !</p>
+                <p class="text-small">Votre don sera transféré vers WhatsApp pour validation finale.</p>
+            </div>
+
+            <div class="form-row payment-reference-row">
+                <label for="transactionReferenceInput">Collez ou saisissez ici la référence / l'ID de la transaction reçue par SMS</label>
+                <input type="text" id="transactionReferenceInput" name="transactionReferenceInput" placeholder="Ex : CIxxxxxx.xxxx.xxxx" required>
+            </div>
+
+            <div class="payment-modal-footer payment-modal-footer-centered">
+                <button id="confirmPaymentDone" class="btn btn-primary btn-large" type="button" disabled>Confirmer mon don sur WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Galerie -->
+    <div id="mediaModal" class="media-modal hidden" role="dialog" aria-modal="true">
+        <div class="media-modal-content">
+            <button id="closeMediaModal" class="media-modal-close" aria-label="Fermer">×</button>
+            <div class="media-modal-body" id="mediaModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
