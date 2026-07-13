@@ -27,7 +27,7 @@ const CONFIG = {
             title: 'Instructions de paiement Orange Money',
             instructions: [
                 '1. Composez le code : *144*2*1*NUMERO_MARCHAND*MONTANT# (ou cliquez sur le bouton ci-dessus sur mobile).',
-                '2. Introduisez votre code secret Orange Money pour valider le transfert.',
+                '2. Introduisez votre code secret Orange Money pour valider le transfert. (Nom du récipiandaire : OUEDRAOGO Souhaïbou)',
                 '3. Patientez pour recevoir le SMS de confirmation d\'Orange Money.',
                 '4. Copiez l\'ID de transaction (ex : CIxxxxxx.xxxx.xxxx) et collez-le ci-dessous.'
             ]
@@ -41,7 +41,7 @@ const CONFIG = {
             title: 'Instructions de paiement Moov Money',
             instructions: [
                 '1. Composez le code : *555*2*1*NUMERO_MARCHAND*MONTANT# (ou cliquez sur le bouton ci-dessus sur mobile).',
-                '2. Saisissez votre code secret Moov Money pour confirmer.',
+                '2. Saisissez votre code secret Moov Money pour confirmer. (Nom du récipiandaire : DENON Ibrahim)',
                 '3. Attendez de recevoir le SMS de notification de Moov Money.',
                 '4. Notez la référence de la transaction (ex : Réf: XXXXXXXX) et insérez-la ci-dessous.'
             ]
@@ -393,7 +393,7 @@ function renderPaymentInstructions(method, amount) {
     let actionButton = '';
 
     if (method === 'orange') {
-        const encodedUssd = `tel:*144*1*1*${CONFIG.ORANGE_MERCHANT_NUMBER}*${amount}%23`;
+        const encodedUssd = `tel:*144*2*1*${CONFIG.ORANGE_MERCHANT_NUMBER}*${amount}%23`;
         actionButton = `<p><a href="${encodedUssd}" class="btn-ussd">Lancer le paiement (*144#)</a></p>`;
     } else if (method === 'moov') {
         const encodedUssd = `tel:*555*2*1*${CONFIG.MOOV_MERCHANT_NUMBER}*${amount}%23`;
