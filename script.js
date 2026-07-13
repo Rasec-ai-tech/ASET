@@ -9,10 +9,6 @@
 
 // Configuration modifiable
 const CONFIG = {
-    // Objectifs de collecte
-    totalGoal: 5000000,
-    collectedAmount: 1850000,
-
     // Numéro WhatsApp de l'association
     WHATSAPP_NUMBER: '22677421771',
 
@@ -41,7 +37,7 @@ const CONFIG = {
             number: '62575601',
             action: 'Transfert d\'argent',
             ussdCode: '*555*2*1*{number}*{amount}#',
-            recipientName: 'OUEDRAOGO Souhaïbou',
+            recipientName: 'DENON Ibrahim',
             title: 'Instructions de paiement Moov Money',
             instructions: [
                 '1. Composez le code : *555*2*1*NUMERO_MARCHAND*MONTANT# (ou cliquez sur le bouton ci-dessus sur mobile).',
