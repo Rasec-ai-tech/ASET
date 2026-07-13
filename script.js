@@ -85,14 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialiser les fonctionnalités
     initNavigation();
     initScrollAnimations();
-    initProgressBars();
     initBackToTop();
     initThemeToggle();
     initMobileMenu();
     initSmoothScroll();
     
-    // Mettre à jour les montants affichés
-    updateDisplayAmounts();
     attachDonationEvents();
 });
 
@@ -106,11 +103,6 @@ function initElements() {
         themeToggle: document.getElementById('themeToggle'),
         navToggle: document.querySelector('.nav-toggle'),
         navMenu: document.querySelector('.nav-menu'),
-        progressBar: document.getElementById('mainProgressBar'),
-        totalGoal: document.getElementById('totalGoal'),
-        collectedAmount: document.getElementById('collectedAmount'),
-        remainingAmount: document.getElementById('remainingAmount'),
-        progressPercent: document.getElementById('progressPercent'),
         donationForm: document.getElementById('donationForm'),
         donationAmountInput: document.getElementById('donationAmountInput'),
         donorNameInput: document.getElementById('donorNameInput'),
@@ -120,14 +112,7 @@ function initElements() {
         donationMethod: document.getElementById('donationMethod'),
         transactionReferenceInput: document.getElementById('transactionReferenceInput'),
         toast: document.getElementById('toast'),
-        animateElements: document.querySelectorAll('[data-animate]'),
-        statTotalAmount: document.getElementById('statTotalAmount'),
-        statDonationsCount: document.getElementById('statDonationsCount'),
-        statPendingCount: document.getElementById('statPendingCount'),
-        statValidatedCount: document.getElementById('statValidatedCount'),
-        donationSummary: document.getElementById('donationSummary'),
-        donationList: document.getElementById('donationList'),
-        exportDonations: document.getElementById('exportDonations')
+        animateElements: document.querySelectorAll('[data-animate]')
     };
 }
 
@@ -173,95 +158,6 @@ function initMobileMenu() {
             elements.navMenu.classList.toggle('active');
             elements.navToggle.classList.toggle('active');
         });
-    }
-}
-
-/**
- * Initialise la galerie avec les médias du projet
- */
-function initGallery() {
-    if (!elements.galleryGrid) {
-        return;
-    }
-
-    const mediaItems = [
-        { type: 'image', src: 'images/IMG-20260704-WA0006.jpg', title: 'Action sur le terrain', caption: 'Photographie capturée lors d’une intervention locale.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0007.jpg', title: 'Équipe ASET', caption: 'Rencontre avec les bénéficiaires et partenaires.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0008.jpg', title: 'Soutien éducatif', caption: 'Moments de partage et d’échange autour de l’éducation.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0009.jpg', title: 'Cohésion communautaire', caption: 'Un moment de solidarité entre les membres.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0010.jpg', title: 'Enfants et apprentissage', caption: 'Un cadre propice à l’apprentissage.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0011.jpg', title: 'Visite de proximité', caption: 'Suivi de l’action de l’association.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0012.jpg', title: 'Énergie positive', caption: 'Des sourires et de la motivation.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0013.jpg', title: 'Engagement collectif', caption: 'Les bénévoles au cœur de l’action.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0014.jpg', title: 'Moments de partage', caption: 'Des échanges qui renforcent la dynamique.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0015.jpg', title: 'Accompagnement', caption: 'Soutien concret auprès des enfants.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0016.jpg', title: 'Solidarité', caption: 'Un impact visible au quotidien.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0017.jpg', title: 'Projet éducatif', caption: 'Des actions pensées pour l’avenir.' },
-        { type: 'image', src: 'images/IMG-20260704-WA0018.jpg', title: 'Équipe mobilisée', caption: 'Mobilisation autour des besoins essentiels.' },
-        { type: 'image', src: 'images/Logo.jpeg', title: 'Logo ASET', caption: 'Identité visuelle de l’association.' },
-        { type: 'video', src: 'videos/VID-20260704-WA0019.mp4', title: 'Vidéo 1', caption: 'Capture vidéo de l’action menée par ASET.' },
-        { type: 'video', src: 'videos/VID-20260704-WA0020.mp4', title: 'Vidéo 2', caption: 'Autre moment de mobilisation et de solidarité.' },
-        { type: 'video', src: 'videos/VID-20260704-WA0021.mp4', title: 'Vidéo 3', caption: 'Témoignage visuel de l’engagement collectif.' }
-    ];
-
-    elements.galleryGrid.innerHTML = mediaItems.map((item, index) => `
-        <article class="gallery-item" data-index="${index}" data-animate tabindex="0" role="button" aria-label="Ouvrir ${item.title}">
-            <div class="gallery-media-wrapper">
-                ${item.type === 'image' ? `<img src="${item.src}" alt="${item.title}" class="gallery-image" loading="lazy">` : `<div class="gallery-video-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #1e3a5f, #f28c28);color:white;"><svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>`}
-            </div>
-            <div class="gallery-overlay">
-                <p>${item.title}</p>
-            </div>
-        </article>
-    `).join('');
-
-    elements.galleryGrid.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', () => openMediaModal(mediaItems[Number(item.dataset.index)]));
-        item.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                openMediaModal(mediaItems[Number(item.dataset.index)]);
-            }
-        });
-    });
-
-    if (elements.closeMediaModal && elements.mediaModal) {
-        elements.closeMediaModal.addEventListener('click', closeMediaModal);
-        elements.mediaModal.addEventListener('click', (event) => {
-            if (event.target === elements.mediaModal) {
-                closeMediaModal();
-            }
-        });
-    }
-}
-
-function openMediaModal(mediaItem) {
-    if (!elements.mediaModal || !elements.mediaModalBody) {
-        return;
-    }
-
-    const content = mediaItem.type === 'image'
-        ? `<img src="${mediaItem.src}" alt="${mediaItem.title}">`
-        : `<video controls autoplay playsinline><source src="${mediaItem.src}" type="video/mp4"></video>`;
-
-    elements.mediaModalBody.innerHTML = `
-        <div class="media-preview">
-            ${content}
-            <div class="media-caption">
-                <h3>${mediaItem.title}</h3>
-                <p>${mediaItem.caption}</p>
-            </div>
-        </div>
-    `;
-    elements.mediaModal.classList.remove('hidden');
-}
-
-function closeMediaModal() {
-    if (elements.mediaModal) {
-        elements.mediaModal.classList.add('hidden');
-    }
-    if (elements.mediaModalBody) {
-        elements.mediaModalBody.innerHTML = '';
     }
 }
 
@@ -316,98 +212,11 @@ function initScrollAnimations() {
     });
 }
 
-// ============================================
-// BARRES DE PROGRESSION
-// ============================================
-
-/**
- * Initialise les barres de progression
- */
-function initProgressBars() {
-    // Calculer le pourcentage
-    const percentage = Math.round((CONFIG.collectedAmount / CONFIG.totalGoal) * 100);
-    
-    // Animer la barre principale après un délai
-    setTimeout(() => {
-        if (elements.progressBar) {
-            elements.progressBar.style.width = percentage + '%';
-        }
-    }, 500);
-    
-    // Animer les barres des objectifs
-    animateObjectiveProgress();
-}
-
-/**
- * Anime les barres de progression des objectifs
- */
-function animateObjectiveProgress() {
-    const progressFills = document.querySelectorAll('.objective-card .progress-fill');
-    
-    progressFills.forEach((fill, index) => {
-        setTimeout(() => {
-            const target = parseInt(fill.getAttribute('data-target'));
-            const current = Math.floor(target * (Math.random() * 0.5 + 0.3)); // Simulation
-            fill.style.width = (current / target * 100) + '%';
-            fill.setAttribute('data-progress', current);
-            
-            const textEl = fill.parentElement.nextElementSibling;
-            if (textEl) {
-                textEl.textContent = `${current}/${target}`;
-            }
-        }, 800 + (index * 200));
-    });
-}
-
-/**
- * Anime les barres de progression dans un conteneur
- */
-function animateProgressBars(container) {
-    const progressFills = container.querySelectorAll('.progress-fill');
-    progressFills.forEach(fill => {
-        const target = parseInt(fill.getAttribute('data-target'));
-        const current = parseInt(fill.getAttribute('data-progress')) || 0;
-        fill.style.width = (current / target * 100) + '%';
-    });
-}
-
-/**
- * Met à jour les montants affichés
- */
-function updateDisplayAmounts() {
-    const collected = Number(CONFIG.collectedAmount) || 0;
-    const remaining = Math.max(0, Number(CONFIG.totalGoal) - collected);
-    const percentage = Math.min(100, Math.round((collected / CONFIG.totalGoal) * 100));
-
-    if (elements.totalGoal) {
-        elements.totalGoal.textContent = formatNumber(CONFIG.totalGoal) + ' FCFA';
-    }
-    if (elements.collectedAmount) {
-        elements.collectedAmount.textContent = formatNumber(collected) + ' FCFA';
-    }
-    if (elements.remainingAmount) {
-        elements.remainingAmount.textContent = formatNumber(remaining) + ' FCFA';
-    }
-    if (elements.progressPercent) {
-        elements.progressPercent.textContent = percentage + '%';
-    }
-    if (elements.progressBar) {
-        elements.progressBar.style.width = percentage + '%';
-    }
-}
-
 /**
  * Formate un nombre avec des espaces
  */
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
-/**
- * Formate un numéro de téléphone par groupes de deux chiffres
- */
-function formatPhoneNumber(phoneNumber) {
-    return phoneNumber.toString().replace(/(\d{2})(?=\d)/g, '$1 ').trim();
 }
 
 // ============================================
@@ -459,57 +268,6 @@ function initThemeToggle() {
 // FONCTIONS DE DON
 // ============================================
 
-/**
- * Définit un montant rapide
- */
-function setAmount(amount) {
-    if (elements.donationAmountInput) {
-        elements.donationAmountInput.value = amount;
-        elements.donationAmountInput.focus();
-    }
-}
-
-/**
- * Copie le numéro Orange Money
- */
-function copyOrangeMoneyNumber() {
-    copyToClipboard(CONFIG.orangeMoneyNumber, 'Numéro copié !');
-}
-
-function copyToClipboard(text, message) {
-    navigator.clipboard.writeText(text).then(() => {
-        showToast(message || 'Copié dans le presse-papier !');
-    }).catch(err => {
-        // Fallback pour les anciens navigateurs
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showToast(message || 'Copié dans le presse-papier !');
-    });
-}
-
-/**
- * Copie le montant du don
- */
-function copyDonationAmount() {
-    const amount = elements.donationAmount ? elements.donationAmount.value : '';
-    if (amount) {
-        copyToClipboard(amount, 'Montant copié !');
-    } else {
-        showToast('Veuillez d\'abord entrer un montant');
-    }
-}
-
-/**
- * Copie le lien de la page
- */
-function copyLink() {
-    copyToClipboard(CONFIG.pageUrl, 'Lien copié !');
-}
-
 let paymentDonationData = null;
 
 function attachDonationEvents() {
@@ -550,7 +308,6 @@ function attachDonationEvents() {
 
     const paymentModal = document.getElementById('paymentModal');
     const closePaymentModal = document.getElementById('closePaymentModal');
-    const copyPaymentInfo = document.getElementById('copyPaymentInfo');
     const confirmPaymentDone = document.getElementById('confirmPaymentDone');
     const transactionReferenceInput = document.getElementById('transactionReferenceInput');
 
@@ -567,16 +324,6 @@ function attachDonationEvents() {
                 paymentModal.classList.add('hidden');
                 resetPaymentModal();
             }
-        });
-    }
-
-    if (copyPaymentInfo) {
-        copyPaymentInfo.addEventListener('click', () => {
-            const amount = paymentDonationData?.amount ? formatNumber(paymentDonationData.amount) : '---';
-            const method = paymentDonationData?.method || 'orange';
-            const methodConfig = CONFIG.paymentMethods[method] || CONFIG.paymentMethods.orange;
-            const text = `ASET - Don ${methodConfig.label}\nMontant : ${amount} FCFA\nNuméro : ${methodConfig.number}\nDestinataire : ${methodConfig.recipientName}\nRéférence : ${paymentDonationData?.id?.slice(0, 8).toUpperCase() || '---'}`;
-            copyToClipboard(text, 'Instructions copiées');
         });
     }
 
@@ -684,7 +431,6 @@ function openPaymentModal() {
     const method = paymentDonationData.method;
     const amount = paymentDonationData.amount;
     const methodConfig = CONFIG.paymentMethods[method] || CONFIG.paymentMethods.orange;
-    const donationRef = paymentDonationData.id.slice(0, 8).toUpperCase();
 
     const paymentModalTitle = document.getElementById('paymentModalTitle');
     const waitingMessage = document.getElementById('waitingMessage');
@@ -749,13 +495,11 @@ function confirmPaymentAndWait() {
 function resetPaymentModal() {
     const paymentInstructions = document.getElementById('paymentInstructions');
     const paymentWaiting = document.getElementById('paymentWaiting');
-    const copyBtn = document.getElementById('copyPaymentInfo');
     const confirmBtn = document.getElementById('confirmPaymentDone');
     const transactionReferenceInput = document.getElementById('transactionReferenceInput');
 
     if (paymentInstructions) paymentInstructions.classList.remove('hidden');
     if (paymentWaiting) paymentWaiting.classList.add('hidden');
-    if (copyBtn) copyBtn.style.display = '';
     if (confirmBtn) {
         confirmBtn.textContent = 'Confirmer mon don sur WhatsApp';
         confirmBtn.disabled = true;
@@ -816,10 +560,39 @@ function showToast(message) {
 // ============================================
 
 /**
- * Détecte le système d'exploitation mobile
+ * Copie un texte dans le presse-papier
  */
-function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+function copyToClipboard(text, message) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(message || 'Copié dans le presse-papier !');
+        }).catch(() => {
+            fallbackCopy(text, message);
+        });
+        return;
+    }
+
+    fallbackCopy(text, message);
+}
+
+function fallbackCopy(text, message) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    showToast(message || 'Copié dans le presse-papier !');
+}
+
+/**
+ * Copie la page courante pour partage
+ */
+function copyLink() {
+    copyToClipboard(CONFIG.pageUrl, 'Lien copié !');
 }
 
 /**
@@ -835,22 +608,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-/**
- * Prévention du spam de clics
- */
-let clickTimeout = null;
-
-function debounce(func, wait) {
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(clickTimeout);
-            func(...args);
-        };
-        clearTimeout(clickTimeout);
-        clickTimeout = setTimeout(later, wait);
-    };
-}
-
 // ============================================
 // ANALYTICS (Optionnel)
 // ============================================
@@ -861,8 +618,6 @@ function debounce(func, wait) {
  */
 function trackEvent(category, action, label) {
     console.log(`Event: ${category} - ${action} - ${label}`);
-    // Ici vous pouvez ajouter votre code Google Analytics
-    // gtag('event', action, { event_category: category, event_label: label });
 }
 
 // Track les clics sur les boutons de don
@@ -876,18 +631,4 @@ document.addEventListener('click', (e) => {
     }
 });
 
-/**
- * Service Worker pour le mode hors ligne (PWA)
- * Optionnel - à activer si nécessaire
- */
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // navigator.serviceWorker.register('/sw.js').then(registration => {
-        //     console.log('SW registered:', registration);
-        // }).catch(error => {
-        //     console.log('SW registration failed:', error);
-        // });
-    });
-}
 
-console.log('ASET Donation Campaign - Application chargée avec succès ✅');
