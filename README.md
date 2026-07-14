@@ -6,7 +6,6 @@ Site web statique conçu pour collecter des dons via un parcours 100 % côté na
 - Le formulaire de don collecte : nom, téléphone, email, montant et message optionnel.
 - L’utilisateur choisit un moyen de paiement : Orange Money, Moov Money ou Wave.
 - Une modale affiche les instructions de paiement adaptées.
-- Après le transfert, l’utilisateur renseigne la référence de transaction dans le champ requis.
 - En validant, le site ouvre WhatsApp avec un message pré-rempli adressé à l’association.
 
 ## Architecture

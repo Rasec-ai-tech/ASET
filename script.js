@@ -28,8 +28,7 @@ const CONFIG = {
             instructions: [
                 '1. Composez le code : *144*2*1*NUMERO_MARCHAND*MONTANT# (ou cliquez sur le bouton ci-dessus sur mobile).',
                 '2. Introduisez votre code secret Orange Money pour valider le transfert. (Nom du récipiandaire : OUEDRAOGO Souhaïbou)',
-                '3. Patientez pour recevoir le SMS de confirmation d\'Orange Money.',
-                '4. Copiez l\'ID de transaction (ex : CIxxxxxx.xxxx.xxxx) et collez-le ci-dessous.'
+                '3. Patientez pour recevoir le SMS de confirmation d\'Orange Money.'
             ]
         },
         moov: {
@@ -42,8 +41,7 @@ const CONFIG = {
             instructions: [
                 '1. Composez le code : *555*2*1*NUMERO_MARCHAND*MONTANT# (ou cliquez sur le bouton ci-dessus sur mobile).',
                 '2. Saisissez votre code secret Moov Money pour confirmer. (Nom du récipiandaire : DENON Ibrahim)',
-                '3. Attendez de recevoir le SMS de notification de Moov Money.',
-                '4. Notez la référence de la transaction (ex : Réf: XXXXXXXX) et insérez-la ci-dessous.'
+                '3. Attendez de recevoir le SMS de notification de Moov Money.'
             ]
         },
         wave: {
@@ -55,8 +53,7 @@ const CONFIG = {
             instructions: [
                 '1. Ouvrez l\'application Wave sur votre smartphone.',
                 '2. Effectuez un transfert direct au numéro <strong>NUMERO_MARCHAND</strong> au nom de <strong>NOM_DESTINATAIRE</strong>.',
-                '3. Saisissez le montant de <strong>[MONTANT] F CFA</strong> et validez le transfert.',
-                '4. Récupérez la référence de transaction reçue par SMS ou dans l\'application (ex : W-XXXX-XXXX) et renseignez-la ci-dessous.'
+                '3. Saisissez le montant de <strong>[MONTANT] F CFA</strong> et validez le transfert.'
             ]
         }
     },
@@ -110,7 +107,6 @@ function initElements() {
         donorEmailInput: document.getElementById('donorEmailInput'),
         donationMessageInput: document.getElementById('donationMessageInput'),
         donationMethod: document.getElementById('donationMethod'),
-        transactionReferenceInput: document.getElementById('transactionReferenceInput'),
         toast: document.getElementById('toast'),
         animateElements: document.querySelectorAll('[data-animate]')
     };
@@ -309,7 +305,6 @@ function attachDonationEvents() {
     const paymentModal = document.getElementById('paymentModal');
     const closePaymentModal = document.getElementById('closePaymentModal');
     const confirmPaymentDone = document.getElementById('confirmPaymentDone');
-    const transactionReferenceInput = document.getElementById('transactionReferenceInput');
 
     if (closePaymentModal && paymentModal) {
         closePaymentModal.addEventListener('click', () => {
@@ -324,12 +319,6 @@ function attachDonationEvents() {
                 paymentModal.classList.add('hidden');
                 resetPaymentModal();
             }
-        });
-    }
-
-    if (transactionReferenceInput && confirmPaymentDone) {
-        transactionReferenceInput.addEventListener('input', () => {
-            confirmPaymentDone.disabled = !transactionReferenceInput.value.trim();
         });
     }
 
@@ -434,7 +423,6 @@ function openPaymentModal() {
 
     const paymentModalTitle = document.getElementById('paymentModalTitle');
     const waitingMessage = document.getElementById('waitingMessage');
-    const transactionReferenceInput = document.getElementById('transactionReferenceInput');
     const confirmPaymentDone = document.getElementById('confirmPaymentDone');
 
     if (paymentModalTitle) {
@@ -444,8 +432,7 @@ function openPaymentModal() {
     renderPaymentInstructions(method, amount);
 
     if (waitingMessage) waitingMessage.textContent = `Votre don de ${formatNumber(amount)} FCFA est maintenant prêt à être confirmé sur WhatsApp.`;
-    if (transactionReferenceInput) transactionReferenceInput.value = '';
-    if (confirmPaymentDone) confirmPaymentDone.disabled = true;
+    if (confirmPaymentDone) confirmPaymentDone.disabled = false;
 
     const paymentInstructions = document.getElementById('paymentInstructions');
     const paymentWaiting = document.getElementById('paymentWaiting');
@@ -458,23 +445,15 @@ function openPaymentModal() {
 }
 
 function confirmPaymentAndWait() {
-    const transactionReferenceInput = document.getElementById('transactionReferenceInput');
     const paymentModal = document.getElementById('paymentModal');
-
-    if (!transactionReferenceInput || !transactionReferenceInput.value.trim()) {
-        showToast('Veuillez renseigner la référence / l\'ID de la transaction');
-        transactionReferenceInput?.focus();
-        return;
-    }
 
     const donorData = {
         ...paymentDonationData,
-        transactionReference: transactionReferenceInput.value.trim(),
         createdAt: new Date().toISOString()
     };
 
     const methodLabel = (CONFIG.paymentMethods[donorData.method] || CONFIG.paymentMethods.orange).label;
-    const message = `*NOUVEAU DON - ASET*\n\nBonjour, je viens d'effectuer un paiement mobile pour soutenir la scolarisation des enfants. Voici mes informations :\n\n• *Nom/Prénom :* ${donorData.name}\n• *Téléphone :* ${donorData.phone}\n• *Email :* ${donorData.email || 'Non renseigné'}\n• *Montant :* ${formatNumber(donorData.amount)} F CFA\n• *Moyen de paiement :* ${methodLabel}\n• *Référence de la transaction (SMS) :* ${donorData.transactionReference}\n\n💬 *Message :* ${donorData.message || 'Aucun message'}`;
+    const message = `*NOUVEAU DON - ASET*\n\nBonjour, je viens d'effectuer un paiement mobile pour soutenir la scolarisation des enfants. Voici mes informations :\n\n• *Nom/Prénom :* ${donorData.name}\n• *Téléphone :* ${donorData.phone}\n• *Email :* ${donorData.email || 'Non renseigné'}\n• *Montant :* ${formatNumber(donorData.amount)} F CFA\n• *Moyen de paiement :* ${methodLabel}\n\n💬 *Message :* ${donorData.message || 'Aucun message'}`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodedMessage}`;
@@ -496,16 +475,12 @@ function resetPaymentModal() {
     const paymentInstructions = document.getElementById('paymentInstructions');
     const paymentWaiting = document.getElementById('paymentWaiting');
     const confirmBtn = document.getElementById('confirmPaymentDone');
-    const transactionReferenceInput = document.getElementById('transactionReferenceInput');
 
     if (paymentInstructions) paymentInstructions.classList.remove('hidden');
     if (paymentWaiting) paymentWaiting.classList.add('hidden');
     if (confirmBtn) {
         confirmBtn.textContent = 'Confirmer mon don sur WhatsApp';
-        confirmBtn.disabled = true;
-    }
-    if (transactionReferenceInput) {
-        transactionReferenceInput.value = '';
+        confirmBtn.disabled = false;
     }
 }
 
