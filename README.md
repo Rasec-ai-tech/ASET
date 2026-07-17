@@ -32,11 +32,10 @@ Puis ouvrir :
 http://127.0.0.1:8000/
 ```
 
-## Déploiement
-Le projet peut être déployé sur n’importe quel hébergement statique, par exemple :
-- Netlify
-- Vercel
-- GitHub Pages
-- Nginx / Apache
+## Auteur
 
-Il suffit de publier les fichiers du dossier racine tel quel.
+Projet développé par OUEDRAOGO Souhaïbou (membre de l'ASET) avec l'appui de IMIEN Jean César Le Grand (Rasec-ai-tech) dans le cadre des activités de l'ASET.
+
+## Licence
+
+Ce dépôt est une propriété de l'ASET. Toute réutilisation ou diffusion doit faire l'objet d'une validation préalable.
